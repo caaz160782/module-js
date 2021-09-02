@@ -83,7 +83,7 @@ const CURP="auzc820716hdfx";
 
 //compuestos
 //array | objeto | class  
-//si se pueden declarar como constantes y se le puede agregar 
+//si se pueden declarar como constantes y se le puede agregar o modificar
 //atributos pero no se puede modificar 
 const KoderEmi ={
       name:"Emi"
