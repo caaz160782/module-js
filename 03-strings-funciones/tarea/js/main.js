@@ -53,61 +53,64 @@ console.log(numeroVocales)
         por la palabra "Koder", 
     - y mostrar el mensaje de nuevo al usuario
 */
-
+/*
 const regex = /estudiante/ig;
 let texto = "Cada estudiante tiene su ritmo, cada estudiante tiene su talento, y cada estudiante complementa al estudiante que tiene a su lado"
 let texto1 = texto.replaceAll(regex,"Koder");
 var numeroPalabras = texto.match(/estudiante/gi).length;
 let print=`La palabra estudiante se repitio ${numeroPalabras} veces, ${texto1}` 
 console.log(print)
+*/
+
 /*
 Ejercicio 5:
     Comparar 2 string, y determinar cual de los dos es el más largo
     input: "string 1", "Some large string"
     Output: "el string {string 1} es el más largo"
 */
-
 /*
 function stringLarge(string1,string2){
     let nCom=""
     //g es una bandera global que ayuda a remplazar todas las ocurrencias
     let naS1=string1.replace(/ /g,"")
     let naS2=string2.replace(/ /g,"")   
-    if(naS1 > naS2){
+    let larStrng1= naS1.length
+    let larStrng2= naS2.length
+
+    if(larStrng1 > larStrng2){
         nCom=`la cadena  ${naS1} es mas larga que ${naS2}`        
     }
-    else if (naS1 < naS2) {
+    else if (larStrng1 < larStrng2) {
         nCom=`la cadena  ${naS2} es mas larga que ${naS1}`        
     }
-    else if (naS1 === naS2){
+    else if (larStrng1 === larStrng2){
         nCom=`Ambas cadenas son del mismo tamaño ${naS1} = ${naS2}`    
     }
     return nCom
 }
-
 let cadena1= prompt("ingresa  cadena 1");
 let cadena2= prompt("ingresa  cadena 2");
 let mayor= stringLarge(cadena1,cadena2)
 console.log( mayor );
-
 */
-
 /*
 Ejercicio 6:
     Dado un string de dos palabras realizar una función que devuelva la palabra más larga
     input: 'Programación Javascript'
     Output: 'Programación'
 */
-/* 
 function stringLarge(string1){       
     let naS1 = string1.split(" ");   
-    if(naS1[0] > naS1[1]){
+    let larStrng1= naS1[0].length
+    let larStrng2= naS1[1].length
+
+    if(larStrng1 > larStrng2){
         nCom=`la palabra mas larga es ${naS1[0]}`        
     }
-    else if (naS1[0] < naS1[1]) {
+    else if (larStrng1 < larStrng2) {
         nCom=`la palabra mas larga es ${naS1[1]}`        
     }
-    else if (naS1[0] === naS1[1]){
+    else if (larStrng1 === larStrng2){
         nCom=`Ambas palabras son del mismo tamaño ${naS1[0]} = ${naS1[1]}`    
     }
     return nCom
@@ -115,4 +118,3 @@ function stringLarge(string1){
 let cadena1= prompt("ingresa  cadena de dos palabras");
 let wordLarge= stringLarge(cadena1)
 console.log( wordLarge ); 
- */
