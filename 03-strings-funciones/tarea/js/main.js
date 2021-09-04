@@ -15,7 +15,6 @@ function nomCom(nombre,apellido){
     nCom=`${nombre} ${apellido}`
    return nCom
 }
-
 nombre= prompt("ingresa nombre");
 apellido= prompt("ingresa apellido");
 
@@ -24,7 +23,7 @@ console.log(con);
  */
 
 /*2.- solicitar el nombre completo de un usuario e indicarle cuantos caracteres tiene su nombre  */
-/* 
+ /*
 function nomCom(nombre){
     let nCom=""
     //g es una bandera global que ayuda a remplazar todas las ocurrencias
@@ -35,30 +34,17 @@ function nomCom(nombre){
 let nameCompleto= prompt("ingresa nombre completo");
 let sizeName= nomCom(nameCompleto)
 console.log(  `El tamaño del ${nameCompleto} es: ${sizeName}`);
- */
-
+*/
 /*
 Ejercicio 3:
     Solicitar el nombre completo a un usuario e indicarle cuantas vocales tiene.
 */
-//funcion con arreglo
 /*
-function noVowels(nombre){
-    let noVow=""
-    let cVowel=0
-    for (let i = 0; i < nombre.length; i++) {
-        // console.log( nombre[i]);
-         if(nombre[i] === 'a'|| nombre[i] === 'e' || nombre[i] === 'i' || nombre[i] === 'o' || nombre[i] === 'u') 
-           {
-            noVow=cVowel+=1;
-           }
-        }
-    return noVow
-}
 let nameCompleto= prompt("ingresa nombre completo");
-let NoVowName= noVowels(nameCompleto)
-console.log(  `El nombre ${nameCompleto} tiene :  ${NoVowName} vocales`);
+var numeroVocales = nameCompleto.match(/[aeiou]/gi).length;
+console.log(numeroVocales)
 */
+
 /*Ejercicio 4:
     Del texto: 
     "Cada estudiante tiene su ritmo, cada estudiante tiene su talento, y cada estudiante complementa 
@@ -67,28 +53,13 @@ console.log(  `El nombre ${nameCompleto} tiene :  ${NoVowName} vocales`);
         por la palabra "Koder", 
     - y mostrar el mensaje de nuevo al usuario
 */
- 
-/* function noWord(texto){
-    let noVow=""
-    let cVowel=0
-    let naT1 = texto.split(" "); 
-    for (let i = 0; i < naT1.length; i++) {
-       //  console.log( naT1[i]);
-         if(naT1[i] === 'estudiante') 
-           {
-            noVow=cVowel+=1;
-           }
-        }
-    return noVow
-}
+
 const regex = /estudiante/ig;
 let texto = "Cada estudiante tiene su ritmo, cada estudiante tiene su talento, y cada estudiante complementa al estudiante que tiene a su lado"
 let texto1 = texto.replaceAll(regex,"Koder");
-let noWords =noWord(texto);
-let print=`La palabra estudiante se repitio ${noWords} veces, ${texto1}` 
+var numeroPalabras = texto.match(/estudiante/gi).length;
+let print=`La palabra estudiante se repitio ${numeroPalabras} veces, ${texto1}` 
 console.log(print)
- */
-
 /*
 Ejercicio 5:
     Comparar 2 string, y determinar cual de los dos es el más largo
