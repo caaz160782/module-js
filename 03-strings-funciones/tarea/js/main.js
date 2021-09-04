@@ -99,6 +99,7 @@ Ejercicio 6:
     input: 'Programación Javascript'
     Output: 'Programación'
 */
+/*
 function stringLarge(string1){       
     let naS1 = string1.split(" ");   
     let larStrng1= naS1[0].length
@@ -118,3 +119,67 @@ function stringLarge(string1){
 let cadena1= prompt("ingresa  cadena de dos palabras");
 let wordLarge= stringLarge(cadena1)
 console.log( wordLarge ); 
+*/
+
+/*7. Crear una funcion que permita al usuario retornar el numero de coincidencias de 
+    una palabra en una frase que el mismo usuario ingrese.
+    input:
+    palabra a buscar: 'Hola'
+    frase: 'Hola me llamo Fernanda Palacios. Hola Otra vez'
+    
+    OutPut: 'El número de coincidenciad de ${palabra a buscar} es de 2 veces :D'
+*/
+/*
+solicitar el texto
+almacenar el texto en una variable
+solicitar l palabra a buscar
+mediante el metodo match buscar la palabra solicitada y contarla
+*/
+/*
+function busquedaPalabra(search,text){    
+    let flagsYouWant = 'gi' //simple string with flags
+    let dynamicRegExp = new RegExp(search, flagsYouWant)     
+    let texto = text ;     
+    let numeroPalabras = texto.match(dynamicRegExp).length;    
+    let print=`La palabra ${search} se repitio ${numeroPalabras} veces, ${texto}` 
+    return print
+}
+let text= prompt("ingresa texto");
+let buscar=prompt("ingresa palabra a buscar");
+let print=busquedaPalabra(buscar,text)
+console.log(print)
+*/
+
+/*
+   Crear una funcion o funciones que permitan elegir al usuario
+    una operacion basica, indicar dos valores y ejecutar la operacion 
+    seleccionada. imprimir el resultado
+    output: "La ${operacion} de los dos numeros que indicaste es: ${resultado}"
+    "suma", 20,10 -> La suma de 20 y 10 es 30
+*/
+function operations(number1,number2,operation){
+    let result
+    switch(operacion){                             
+        case "suma":
+           result =`EL resultado de la operacion "${operacion}" de los numeros es: ${number1 + number2}`;
+           break;  
+        case "resta":
+            result =`EL resultado de la operacion "${operacion}" de los numeros es: ${number1 - number2}`;
+            break;  
+         case "multiplicacion":
+            result =`EL resultado de la operacion "${operacion}" de los numeros es: ${number1 * number2}`;
+            break;  
+          case "division":
+            result =`EL resultado de la operacion "${operacion}" de los numeros es: ${number1/number2}`;
+            break;  
+         default:
+            result =`opcion no valida`;
+          break;  
+      }
+      return result
+ } 
+
+ let operacion= prompt("ingresa operacion suma || resta || multiplicacion || division");
+ let number1= Number(prompt("ingresa numero1"))
+ let number2= Number(prompt("ingresa numero2"))
+ console.log(operations(number1,number2,operacion))
