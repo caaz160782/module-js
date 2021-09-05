@@ -4,7 +4,7 @@
       nombre minusculas  
       apellidos mayusculas
   input nombre ="fernanda"    
-  input apellidos ="aguirre ortiz"
+  input apellidos ="PALACIOS vera"
   output "fernanda PALACIOS VERA"
 */
  /* 
@@ -128,8 +128,7 @@ console.log( wordLarge );
     frase: 'Hola me llamo Fernanda Palacios. Hola Otra vez'
     
     OutPut: 'El número de coincidenciad de ${palabra a buscar} es de 2 veces :D'
-*/
-/*
+
 solicitar el texto
 almacenar el texto en una variable
 solicitar l palabra a buscar
@@ -151,12 +150,14 @@ console.log(print)
 */
 
 /*
-   Crear una funcion o funciones que permitan elegir al usuario
+  8 Crear una funcion o funciones que permitan elegir al usuario
     una operacion basica, indicar dos valores y ejecutar la operacion 
     seleccionada. imprimir el resultado
     output: "La ${operacion} de los dos numeros que indicaste es: ${resultado}"
     "suma", 20,10 -> La suma de 20 y 10 es 30
 */
+
+/*
 function operations(number1,number2,operation){
     let result
     switch(operacion){                             
@@ -183,3 +184,7 @@ function operations(number1,number2,operation){
  let number1= Number(prompt("ingresa numero1"))
  let number2= Number(prompt("ingresa numero2"))
  console.log(operations(number1,number2,operacion))
+*/
+
+
+
