@@ -108,21 +108,20 @@ for(let i=0;  i<10; i++)
  }
 */
 
-/*
 function arbol(numeroFilas){
- for(let i=1;  i<=numeroFilas; i++)
+  let patron 
+  for(let i=1;  i<=numeroFilas; i++)
   {
-    let patron="" 
+   patron="" 
    for(let x=0 ; x < i; x++){
     patron += ` * `
+    //console.log(x)       //console.log(patron)    
     }           
-    console.log(patron)       //console.log(patron)    
-   }
+     console.log(patron)       //console.log(patron)    
+   } 
 }
-let numeroFilas= Number(prompt("ingresa un numero de filas"))
-console.log( arbol(numeroFilas) )
-*/
-
+let numeroFilas= prompt("ingresa un numero de filas")
+arbol(numeroFilas)
 /*
     Ejercicio 6;
     Imprimir en consola la suma de los multiplos de 3 y 5 contenidos entre el 1 y 100 -> 233168
@@ -193,8 +192,10 @@ for(let i=0; i< lastFive.length;i++ ){
 }
 //console.log(arrayNumero)
 //console.log(lastFive)
-console.log(`la suma de ${lastFive} es= ${sumaLastFive}`)*/ 
+console.log(`la suma de ${lastFive} es= ${sumaLastFive}`)
+*/ 
 
+/*
 function sumaLast5(){
  let arrayNumero =[];
  let index=1
@@ -217,4 +218,6 @@ function sumaLast5(){
 //console.log(`la suma de ${lastFive} es= ${sumaLastFive}`) 
   return `la suma de ${lastFive} es= ${sumaLastFive}`
 }
+
 console.log(sumaLast5());
+*/
