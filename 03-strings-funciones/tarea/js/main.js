@@ -7,6 +7,7 @@
   input apellidos ="PALACIOS vera"
   output "fernanda PALACIOS VERA"
 */
+
  /* 
 function nomCom(nombre,apellido){
     let nCom=""

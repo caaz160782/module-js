@@ -39,7 +39,7 @@ console.log(wordReverse(word))
 este mismo ejercicio se puede resolver por medio de un  de un for 
 solicitamos la cadena al usuario la iremos recorriendo he imprimiendo al reves
 */
-
+/*
 function wordReverse(word){
     let nuevaCadena = "";
     for (let x = word.length - 1; x >= 0; x--) {
@@ -49,7 +49,7 @@ function wordReverse(word){
   }
 let word= prompt("ingresa una palabra");
 console.log(wordReverse(word))
-
+*/
 
 /*
 input: "a very large string"
@@ -68,11 +68,10 @@ para diferenciar entre may y min  seria muy parecido como saber el valor de par 
 pues lenght nos da el tamaño total del string y con  esto creamos un ciclo en donde se puede saber si es par o impar una posicion
 */
 
-/*
 function alternateText(word){
     let nuevaCadena = "";
-    for (let i= 0; i < word.length ; ++i) {        
-         if(i % 2 == 0)
+    for (let i= 0; i < word.length ; i++) {        
+         if(i % 2 === 0)
         {
          nuevaCadena += word[i].toUpperCase()
         }
@@ -85,7 +84,6 @@ function alternateText(word){
 let word= prompt("ingresa una palabra o frase");
 let res = alternateText(word)
 console.log(res)
-*/
 
 /*
 Crear una funcion que me indique si un string comienza con
@@ -129,4 +127,5 @@ function startWord(word){
 let word= prompt("ingresa una palabra o frase");
 let res = startWord(word)
 console.log(res)
+
 */
