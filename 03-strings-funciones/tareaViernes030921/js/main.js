@@ -83,6 +83,7 @@ function alternateText(word){
   }
 let word= prompt("ingresa una palabra o frase");
 let res = alternateText(word)
+//dem
 console.log(res)
 
 /*
