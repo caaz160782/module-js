@@ -74,7 +74,6 @@ console.log(print)
 
 /*Crear un programa que permita a una cadena de texto muestra el caracter '-' entre cada caracter de la cadena.*/
 
-//const elements = ['Fire', 'Air', 'Water','land'];
 /*
 const  pullApart = (string) =>{
     let separeteString=string.replace(/ /g,"")
@@ -86,7 +85,6 @@ let cadena= prompt("ingresa  cadena ");
 let print= pullApart(cadena)
 console.log( print );
 */
-
 
 /*Sabiendo que una cadena de texto contiene parentesis. Crear un programa que me devuelva la cadena que se encuetra entre los parentesis.*/
 /*
@@ -126,7 +124,7 @@ Forma 2:
 */
 
 /*
-const generatePyramid=(NumberofRows)=> {
+const pyramid=(NumberofRows)=> {
     let totalNumberofRows = NumberofRows;
     let output="";
     for (var i = 1; i <= totalNumberofRows; i++) {
@@ -145,7 +143,7 @@ const generatePyramid=(NumberofRows)=> {
         output="";
     }
 } 
- generatePyramid(10) 
+ pyramid(10) 
 */
 
 /*Solicitar al usuario un nombre por medio del promt e ingresarlo a una coleccion , validando que no se repita ningun nombre.*/
@@ -159,8 +157,7 @@ const names =() =>{
    }
    while(isNaN(numNombres))
       {       
-       for(let i=0; i<numNombres; i++){
-     
+       for(let i=0; i<numNombres; i++){     
         if(nombre-length === 0){
             console.log(1)
             ingresaNombres = prompt(`Dame el nombre completo `)   
@@ -191,13 +188,11 @@ console.log(nombres)
 
 /*
 const arrayNumero = [5, 12, 8, 130, 44,10];
-
 const numeros =(array) =>{
     let max=0 
     let min=0 
     let sum=0
     let promedio=0
-
     max= Math.max(...array) 
     console.log(`El numero mayor es ${max}`)
     max= Math.min(...array) 
@@ -219,19 +214,13 @@ console.log(op)
 /*Solicitar al usuario por medio de un promt una cadena de numeros separados por algun caracter y que cada numero se agregue a una collecion de numeros.*/
 /*
 const number =() =>{
-    let numLength=""
-    let numeros =[]
-    let ingresaNumeros="" 
-    do{
-        numLength = Number(prompt("el número tamaño del arreglo"))    
-     }
-     while(isNaN(numLength))
-        {     
-          for(let i=0; i< numLength; i++)  {
-            ingresaNumeros = prompt(`ingresa  `)   
-            numeros.push([ingresaNumeros])   
-          }
-          numeros= numeros.join("-")
+     let numLength=""  
+     let numeros=[]  
+     let spli=""
+     numLength = prompt("agrega una cadena de numeros  separandolos con /")    
+     spli = numLength.split("/")
+       for(let i=0; i< spli.length; i++)  {
+             numeros.push([spli[i]])   
         }      
       return numeros    
   }
@@ -286,10 +275,8 @@ const number2 =() =>{
 */
 
 /*Crear un programa que dado un array de strings, un número, y debe de imprimir cada uno de los items del array con los caracteres limitados al número ingresado.*/
-
+/*
 let fruits = ["Apple", "Orange", "Plum","pineapple","cantaloupe","banana"];
-
-
 const stringArray =(num,array) =>{ 
     //let rep=num
     for(let i=0; i< array.length; i++ )
@@ -297,7 +284,7 @@ const stringArray =(num,array) =>{
        if( array[i].length > num)
         {
          console.log(array[i].slice(num))
-         
+
         }    
 
     }
@@ -305,7 +292,7 @@ const stringArray =(num,array) =>{
 }
 let num =   parseInt( prompt(`ingresa un numero `))
 console.log( stringArray(num,fruits))
-
+*/
 
 
 /*Crear un programa que dados los datos de 3 lados de un triangulo con base en esos datos, determinar el área del triangulo y mostrarla en un mensaje en otro mensaje, indicar si el triangulo es isoseles, equilátero o escaleno.*/
