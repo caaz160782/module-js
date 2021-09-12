@@ -342,7 +342,7 @@ const nString =(numero) =>{
      let se=strin.replace(/ /g,"")    
      return se
      }
-let numString =   parseInt( prompt(`ingresa de cuantos caracteres sera tu string no >26`))
+let numString =   parseInt( prompt(`ingresa de cuantos caracteres sera tu string no<26`))
 console.log( nString(numString))
 */
 
