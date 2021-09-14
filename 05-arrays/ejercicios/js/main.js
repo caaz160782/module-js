@@ -39,6 +39,15 @@ console.log("----------1------------");
 let koders = nombresKoders()
 
 
+function printKoders(array){
+  for(let i=0; i<array.length; i++){
+    console.log(`Koder ${array[i][0]} :  ${array[i][1]}`)
+ }
+}
+
+//printKoders(koders);
+
+
 /*2-
 A partir del ejercicio anterior:
 Crear una funcion que permita saber el nombre de algun koder
@@ -54,17 +63,13 @@ function findKoder(namearray,number){
          // console.log(`el nombre del koder es ${namearray[i][1]}`)
          find= `el nombre del koder es ${namearray[i][1]}`
         } 
-     /*
-        if(i+1 === number){
-            find= `el nombre del koder numero ${number} es ${namearray[i]}`
-          }  */
+ 
     }    
     return find
 }
 
 let numeroKoder = Number(prompt("indica el número de koder a buscar"))
 console.log(findKoder(koders, numeroKoder))
-
 
 /*- imprimir la lista de koders en orden alfabetico descendiente*/
 console.log("-----------3-----------");
@@ -112,33 +117,42 @@ descen(koders)
     }
 }
 
+function getInitials(wordArray)
+{
+  let  iniciales="";      
+  for (let i=0; i<wordArray.length; i++){
+    iniciales += wordArray[i].charAt(0).toUpperCase() + "."               
+    //console.log(iniciales)   
+   } 
+   return iniciales
+}
+
 function alternateText(arrayNames){
-        let  iniciales="";
-        //console.log( arrayNames )
+        let arrayKofrrWithInitiasl=[]
         let nameKoders= arrayNames;  
-        let nombre="" 
-        let arrayIni=""
+        let nombre=""         
         for (let i= 0; i < nameKoders.length ; i++) {      
               nombre = nameKoders[i][1].split(" ")
-              for(let j=0; j<nombre.length; j++)
-                {
-                 iniciales += nombre[j].charAt(0).toUpperCase() + "."               
-               }  
+              let iniciales = getInitials(nombre)     
+              let nameComplete =` ${koders[i][0]}: ${koders[i][1]} ${iniciales}` 
+              arrayKofrrWithInitiasl.push(nameComplete)    
+             // console.log(arrayKofrrWithInitiasl)
             }
-         /*   let j=0  
-             for (let i= 0; i < nameKoders.length ; i++) {      
-                console.log(`Koder ${nameKoders[i][0]} : ${nameKoders[i][1]} ( ${iniciales[j]}. ${iniciales[++j]}. ${iniciales[++j]}. )`) 
-                j= ++j                
-             }*/
-    return iniciales ;
+       return  arrayKofrrWithInitiasl
   }
+
+
 
 function iniciales(namearray)
 {
    let ascen = namearray.sort(sortFunction)   
    //console.log(ascen) ;
    let dem=alternateText(ascen)
-   console.log(dem) ;
+   //console.log(dem) 
+   for(let i=0; i<dem.length;i++ ) 
+   {
+    console.log("Koder :"+ dem[i]) 
+   }
 }
 iniciales(koders) 
 /*
@@ -146,7 +160,7 @@ iniciales(koders)
   por ejemplo: "Fanny Alvarez, lugar 3"
 */
 
-/*
+
 console.log("-----------5-----------");
 
 function plusData(namearray,newKoder,posicion)
@@ -164,4 +178,3 @@ let newKoder = prompt("indica el nombre de koder agregar")
 let posicion = Number(prompt("indica en que posicion"))
 console.log(plusData(koders, newKoder,posicion))
 
-*/
