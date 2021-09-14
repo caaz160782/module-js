@@ -85,31 +85,36 @@ let mentorArray = [
         ]
     }
 ]
+
+/*   
+const getMapFromArray = data =>
+data.reduce((acc, item) => {
+  // add object key to our object i.e. charmander: { type: 'water' }
+  acc[item.signature] = { score: item.score };
+  return acc;
+}, {});
+*/
+
 /*- Obtener el score promedio de cada materia (HTML, CSS, JS)*/
 console.log("----- Promedio ---")
 const promedioScope= (mentorObject) =>{
     let sumaHtml=0 
     let sumaCss=0 
     let sumaJs=0 
-    //console.log(mentorObject)  
     mentorObject.forEach((mentorObject)=> {
     let scoresArray= mentorObject.scores    
     scoresArray.forEach( (scores) => {
     ///promedio por materia
-    if(scores.signature === "HTML")
-    {
+     if(scores.signature === "HTML")
+     {
       sumaHtml += scores.score
-    //  console.log("sumahtml" + sumaHtml ) 
-    }
-    if(scores.signature === "CSS")
+     }
+     else if(scores.signature === "CSS")
+     {
+      sumaCss += scores.score    
+     }else if(scores.signature === "JS")
     {
-      sumaCss += scores.score
-    //  console.log("sumahtml" + sumaHtml ) 
-    }
-    if(scores.signature === "JS")
-    {
-      sumaJs += scores.score
-    //  console.log("sumahtml" + sumaHtml ) 
+      sumaJs += scores.score    
     }
    }) 
 })
@@ -131,45 +136,26 @@ console.log("----- Promedio Individual---")
 const promedioIndividual= (mentorObject) =>{
     let newArrayMentors=[]
     mentorObject.forEach((mentorObject)=> {
-    let sumaTutor=0 
-    let scoresArray= mentorObject.scores 
-    scoresArray.forEach( (scores) => {
-        if(mentorObject.name === "Angel Resendiz")
-        {
-           sumaTutor += scores.score          
-        }
-        if(mentorObject.name === "Elda Corona")
-        {
-           sumaTutor += scores.score         
-        }
-        if(mentorObject.name === "Alfred Altamirando")
-        {
-           sumaTutor += scores.score      
-        }   
-        if(mentorObject.name === "Tux Tuxtla")
-        {
-           sumaTutor += scores.score      
-        }
-        if(mentorObject.name === "Fernanda Palacios")
-        {
-           sumaTutor += scores.score      
-        }        
-   }) 
-   let promTutor=  sumaTutor/scoresArray.length
-   let redo=promTutor.toFixed(2) 
-   mentorObject.promedio=redo
-   console.log(`Mi nombre es ${mentorObject.name} mi promedio es ${redo}`)   
-  })  
+        let sumaTutor=0 
+        let scoresArray= mentorObject.scores 
+        scoresArray.forEach( (scores) => {
+            sumaTutor += scores.score       
+          }) 
+         let promTutor=  sumaTutor/scoresArray.length
+         let redo=promTutor.toFixed(2) 
+         mentorObject.promedio=redo
+         console.log(`Mi nombre es ${mentorObject.name} mi promedio es ${redo}`)   
+      })  
   return mentorObject
 }
 let newArrayMentor=promedioIndividual(mentorArray);
 //console.log(newArrayMentor)
+
 /*- Obtener la lista de mentores cuyo promedio sea mayor a 9.5*/
 console.log("----- Promedio > 9.5---")
   
 const mayor9= (newArrayMentor) =>{
     newArrayMentor.forEach((newArrayMentor)=> {
-    //console.log(`el nombre es: ${newArrayMentor.promedio}`)   
     if(newArrayMentor.promedio > 9.5){
         console.log(`Mi nombre es ${newArrayMentor.name} y tengo un promedio de ${newArrayMentor.promedio}`)   
     }
