@@ -112,19 +112,21 @@ const promedioScope= (mentorArray) =>{
      else if(scores.signature === "CSS")
      {
       sumaCss += scores.score    
-     }else if(scores.signature === "JS")
+     }else/* if(scores.signature === "JS")*/
     {
       sumaJs += scores.score    
     }
    }) 
 })
-   let promHtml=sumaHtml/mentorArray.length
-   let promCss=sumaCss/mentorArray.length
-   let promJs=sumaJs/mentorArray.length
+   let promHtml =sumaHtml/mentorArray.length
+   let promCss  =sumaCss/mentorArray.length
+   let promJs   =sumaJs/mentorArray.length
+
    /*console.log(`EL promedio html es: ${promHtml}`)   
    console.log(`El promedio css es: ${promCss}`)  
    console.log(`El promedio js es: ${promJs}`)  */
-   let objectAvg={promHtml,promCss,promJs}
+
+   let objectAvg= { promHtml, promCss, promJs}
    return objectAvg
 }
 
@@ -139,8 +141,7 @@ console.log(promedio)
 console.log("----- Promedio Individual---")
 
 const promedioIndividual= (mentorArray )=>{
-    let newArrayMentors=[]
-    mentorArray.forEach( (mentorObject) => {
+      mentorArray.forEach( (mentorObject) => {
         let sumaTutor=0 
         let scoresArray= mentorObject.scores 
         scoresArray.forEach( (scores) => {
@@ -154,7 +155,6 @@ const promedioIndividual= (mentorArray )=>{
       })  
   return mentorArray
 }
-
 let newArrayMentor = promedioIndividual(mentorArray);
 //console.log(newArrayMentor)
 
