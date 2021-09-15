@@ -102,8 +102,8 @@ const promedioScope= (mentorArray) =>{
     let sumaCss=0 
     let sumaJs=0 
 
-    mentorArray.forEach((mentorArray)=> {
-    let scoresArray= mentorArray.scores    
+    mentorArray.forEach((mentorObjects)=> {
+    let scoresArray= mentorObjects.scores    
     scoresArray.forEach( (scores) => {
     ///promedio por materia
      if(scores.signature === "HTML")
@@ -137,23 +137,23 @@ console.log("----- Promedio Individual---")
 
 const promedioIndividual= (mentorArray )=>{
     let newArrayMentors=[]
-    mentorArray.forEach( (mentorArray) => {
+    mentorArray.forEach( (mentorObject) => {
         let sumaTutor=0 
-        let scoresArray= mentorArray.scores 
+        let scoresArray= mentorObject.scores 
         scoresArray.forEach( (scores) => {
             sumaTutor += scores.score       
           }) 
          let promTutor=  sumaTutor/scoresArray.length
          let redo=promTutor.toFixed(2) 
          //agrege la propiedad promedio
-         mentorArray.promedio = redo
+         mentorObject.promedio = redo
          console.log(`Mi nombre es ${mentorArray.name} mi promedio es ${redo}`)   
       })  
   return mentorArray
 }
 let newArrayMentor = promedioIndividual(mentorArray);
 
-//console.log(newArrayMentor)
+console.log(newArrayMentor)
 
 /*- Obtener la lista de mentores cuyo promedio sea mayor a 9.5*/
 
