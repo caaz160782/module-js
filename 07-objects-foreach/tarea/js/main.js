@@ -121,11 +121,9 @@ const promedioScope= (mentorArray) =>{
    let promHtml =sumaHtml/mentorArray.length
    let promCss  =sumaCss/mentorArray.length
    let promJs   =sumaJs/mentorArray.length
-
    /*console.log(`EL promedio html es: ${promHtml}`)   
    console.log(`El promedio css es: ${promCss}`)  
    console.log(`El promedio js es: ${promJs}`)  */
-
    let objectAvg= { promHtml, promCss, promJs}
    return objectAvg
 }
