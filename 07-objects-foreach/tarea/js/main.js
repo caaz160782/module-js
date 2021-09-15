@@ -97,12 +97,13 @@ data.reduce((acc, item) => {
 
 /*- Obtener el score promedio de cada materia (HTML, CSS, JS)*/
 console.log("----- Promedio ---")
-const promedioScope= (mentorObject) =>{
+const promedioScope= (mentorArray) =>{
     let sumaHtml=0 
     let sumaCss=0 
     let sumaJs=0 
-    mentorObject.forEach((mentorObject)=> {
-    let scoresArray= mentorObject.scores    
+
+    mentorArray.forEach((mentorArray)=> {
+    let scoresArray= mentorArray.scores    
     scoresArray.forEach( (scores) => {
     ///promedio por materia
      if(scores.signature === "HTML")
@@ -118,40 +119,44 @@ const promedioScope= (mentorObject) =>{
     }
    }) 
 })
-   let promHtml=sumaHtml/mentorObject.length
-   let promCss=sumaCss/mentorObject.length
-   let promJs=sumaJs/mentorObject.length
+   let promHtml=sumaHtml/mentorArray.length
+   let promCss=sumaCss/mentorArray.length
+   let promJs=sumaJs/mentorArray.length
    console.log(`EL promedio html es: ${promHtml}`)   
    console.log(`El promedio css es: ${promCss}`)  
    console.log(`El promedio js es: ${promJs}`)  
 }
-promedioScope(mentorArray);
 
+promedioScope(mentorArray);
 ////////////////////////////////////////////////////////////////////
 /*- Obtener el promedio indivual de cada mentor
 - Crear un array de string con la siguiente forma:
   "Mi nombre es {name} y mi promedio es {promedio}"
 */ 
 console.log("----- Promedio Individual---")
-const promedioIndividual= (mentorObject) =>{
+
+const promedioIndividual= (mentorArray )=>{
     let newArrayMentors=[]
-    mentorObject.forEach((mentorObject)=> {
+    mentorArray.forEach( (mentorArray) => {
         let sumaTutor=0 
-        let scoresArray= mentorObject.scores 
+        let scoresArray= mentorArray.scores 
         scoresArray.forEach( (scores) => {
             sumaTutor += scores.score       
           }) 
          let promTutor=  sumaTutor/scoresArray.length
          let redo=promTutor.toFixed(2) 
-         mentorObject.promedio=redo
-         console.log(`Mi nombre es ${mentorObject.name} mi promedio es ${redo}`)   
+         //agrege la propiedad promedio
+         mentorArray.promedio = redo
+         console.log(`Mi nombre es ${mentorArray.name} mi promedio es ${redo}`)   
       })  
-  return mentorObject
+  return mentorArray
 }
-let newArrayMentor=promedioIndividual(mentorArray);
+let newArrayMentor = promedioIndividual(mentorArray);
+
 //console.log(newArrayMentor)
 
 /*- Obtener la lista de mentores cuyo promedio sea mayor a 9.5*/
+
 console.log("----- Promedio > 9.5---")
   
 const mayor9= (newArrayMentor) =>{
