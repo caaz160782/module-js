@@ -36,6 +36,7 @@ const songsData = [
         statistics: {
             likes: 12000,
             reproductions: 25690
+            
         },
     },
     {
@@ -70,57 +71,62 @@ const songsData = [
 /////////////////////
 console.log(songsData)
 ///////imprimir bandas
+
 //metodo largo map
-/*
+
 const band = (songArray ) => {
      let nombreBandas= songArray.map( (songObject) => { 
-     let banda={}    
-         banda= songObject.band           
+      let banda={    
+         band: songObject.band           
+         }
         return banda
      })   
      return nombreBandas
    }
 let nameBands = band(songsData)
-console.log(nameBands)
-*/
-//metodo corto map
+//console.log(nameBands)
 
+//listado bandas
 const printBandas = (songArray ) => {
     let nombreBandas= songArray.map( (songObject) =>  songObject.band)
     return nombreBandas 
 }
-let nameBands=printBandas(songsData)
-//console.log(nameBands)
+let nameBands1=printBandas(songsData)
+//console.log(nameBands1)
+
 /*- Agrupar el nombres de la bandas, que no esten repetidas*/
 console.log("-----Agrupado por bandas sin repetir------------")
-
-/*
-const bandNoRepeat = (nameBands)=>{
-    let bandas= nameBands.filter( (nombreBandas,index) =>{
-        return nameBands.indexOf(nombreBandas) === index    
-    })
-    return bandas
-}*/
-
-const bandNoRepeat = (nameBands)=>{
-    let bandas= nameBands.filter( (nombreBandas,index) =>{
-      /*   console.info(nameBands.indexOf(nombreBandas))          
-         console.log(nameBands.indexOf(nombreBandas)+" ==="+ index)  
-         console.info(nameBands.indexOf(nombreBandas) === index)   */
-        if(nameBands.indexOf(nombreBandas) === index )
-         {            
-          let nombreBanda={}    
-          nombreBanda= nombreBandas           
-          return nombreBanda     
-        }   
+const bandNoRepeat1 = (nameBands1)=>{
+    let bandas= nameBands1.filter( (nombreBandas,index) =>{
+        return nameBands1.indexOf(nombreBandas) === index    
     })
     return bandas
 }
+console.log( bandNoRepeat1(nameBands1) )
 
-console.log(bandNoRepeat(nameBands).sort())
-let nombreBandas=bandNoRepeat(nameBands)
+///se creo como objeto para el group By
+const bandNoRepeat = (nameBands)=>{
+    let bandas= nameBands.filter( (nombreBandas,index) =>{
+     //let  foundPositionGroup = nameBandsWithSong.findIndex(item => item.band === songsData.band)
+     let findPosBand = nameBands.findIndex(item => item.band === nombreBandas.band ) 
+      if (findPosBand === index )
+         { 
+           let nombreBanda= {
+                           band: nombreBandas                     
+                           }              
+           return nombreBanda   
+         }   
+    })
+    return bandas
+}
+//console.log(bandNoRepeat(nameBands))
+let nameBandNoRepeat=bandNoRepeat(nameBands)
+
+
 /*- Agrupar las canciones por una banda*/
-console.log("-----canciones ------------")
+console.log("-----canciones por banda------------")
+/*
+ bandas con canciones
 const bandWithSongs = (songArray) => {
     let nombreBandas= songArray.map( (songObject) => { 
     let bandWithSong={
@@ -132,10 +138,12 @@ const bandWithSongs = (songArray) => {
     return nombreBandas
   }
 let nameBandsWithSong = bandWithSongs(songsData)
-//console.log(nameBandsWithSong)
+console.log(nameBandsWithSong)*/
+/*
 console.log("---------Demo-----------")
-
-let grupo=[{
+let grupo=
+[
+ {
     grupo:"mana",
     canciones:["sondejugaran","otra"]
  },
@@ -144,73 +152,33 @@ let grupo=[{
     canciones:["sonan","ot"]
  }
 ]
-console.log(grupo)
-
-const groupSongForBand = ( nameBandsWithSong)=>{
-    console.log(nameBandsWithSong)
-    let groupForBand= nameBandsWithSong.map( (songsData,index) =>{
-     // let  foundPositionGroup= nameBandsWithSong.findIndex(item => item.band === songsData.band)
-     // let  foundPositionSong= nameBandsWithSong.findIndex(item => item.song === songsData.song)
-        let group ={
-                  band:"",
-                  song:[]
-                }
-
-//console.log(nameBandsWithSong[index].song)       
-  
-//if( foundPositionGroup === index  ) 
-         // {
-         //    group.band=songsData.band               
-          //   group.song=songsData.song                                 
-                        
-         //    return  group        
-         // }
-
-         if(nameBandsWithSong[index].band === songsData.band)
-         {
-           console.log(1)
-         }
-
-         
-       })
-    return groupForBand
-}
-console.log(groupSongForBand(nameBandsWithSong,nombreBandas))
-
-/*
-const groupSongForBand = ( nameBandsWithSong)=>{
-    console.log(nameBandsWithSong)
-    //let inx = nameBandsWithSong.findIndex(item => item.band === "Jaguares")
-    //console.log(inx)
-     let groupForBand= nameBandsWithSong.filter( (songsData,index) =>{
-       
-      let  foundPositionGroup= nameBandsWithSong.findIndex(item => item.band === songsData.band)
-      let  foundPositionSong= nameBandsWithSong.findIndex(item => item.song === songsData.song)
-      
-      let group ={
-                  band:"",
-                  song:{}
-                }
-        if( foundPositionGroup === index) 
-        {
-             group.band=songsData.band               
-             group.song=songsData.song                                 
-                        
-             return  group        
-        }
-       })
-    return groupForBand
-}
-console.log(groupSongForBand(nameBandsWithSong,nombreBandas))
+let cancio =grupo[0].canciones[0]
+grupo[0].canciones.push("bonita")
+grupo[0].record= ["prueba"]
+//grupo[0].record.push("bonita")
+  console.log(cancio)
+  console.log(grupo)
 */
-
-
-
-
+const groupSongForBand = ( songArray,nameBandNoRepeat )=>{
+    let canciones= nameBandNoRepeat.map( (bandNorepeat ,index) =>{
+        nameBandNoRepeat[index].canciones=[]    
+        songArray.forEach( (songObject)=> {
+          if(bandNorepeat.band === songObject.band){
+             let findSong = nameBandNoRepeat.findIndex(item => item.band === songObject.name )     
+             if(findSong === -1){
+                nameBandNoRepeat[index].canciones.push(songObject.name)
+             }           
+        }                              
+      }) 
+      return nameBandNoRepeat           
+    }) 
+ //   console.log(nameBandNoRepeat)            
+return canciones
+}
+console.log( groupSongForBand( songsData,nameBandNoRepeat ) )
 //- Agrupar las canciones por una banda
 
-/*
-console.log("-----canciones por una banda------------")
+console.log("-----buscar por una banda------------")
 const cancionesXbanda = ( arraySongs, nameBanda )=>{
     //console.log(arraySongs);
    let canciones= arraySongs.filter( (arraySongsBand) =>{
@@ -221,10 +189,40 @@ const cancionesXbanda = ( arraySongs, nameBanda )=>{
     })
     return canciones
 }
-console.log(cancionesXbanda(songsData,'Maná'))
-
-*/
+console.log(cancionesXbanda(songsData,'Enanitos Verdes'))
 
 
+//- La cancion con más reproducciones
+console.log("---------most repro------------------")
 
+const  songMostRepro= ( songsData  )=>{
+      
+      let repro= songsData.map( (songObject) =>  songObject.statistics.reproductions)
+       //console.log( repro )
+      let moreRepro= Math.max( ...repro )
+     // console.log (moreRepro)
+      let mostRepo= songsData.filter( (static) =>{
+        if(static.statistics.reproductions >= moreRepro   )        
+        {
+            return songsData
+        }      
+    })
+    return mostRepo
+}
+console.log(songMostRepro( songsData ))
+
+console.log("----------------likes-----------------")
+const  songMostLikes= ( songsData  )=>{      
+      let like= songsData.map( (songObject) =>  songObject.statistics.likes)
+      let moreLike= Math.max( ...like )
+     // console.log (moreRepro)
+      let mostLike= songsData.filter( (static) =>{
+        if(static.statistics.likes >= moreLike   )        
+        {
+            return songsData
+        }      
+    })
+    return mostLike
+}
+console.log(songMostLikes( songsData ))
 
