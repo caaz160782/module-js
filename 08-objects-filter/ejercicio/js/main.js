@@ -146,35 +146,38 @@ let grupo=[{
 ]
 console.log(grupo)
 
-/*
 const groupSongForBand = ( nameBandsWithSong)=>{
     console.log(nameBandsWithSong)
-    //let inx = nameBandsWithSong.findIndex(item => item.band === "Jaguares")
-    //console.log(inx)
-     let groupForBand= nameBandsWithSong.filter( (songsData,index) =>{
-       
-      let  foundPositionGroup= nameBandsWithSong.findIndex(item => item.band === songsData.band)
-      let  foundPositionSong= nameBandsWithSong.findIndex(item => item.song === songsData.song)
-      
-     // console.log(foundPositionGroup)
-      console.log(foundPositionSong)
-
-      let group ={
+    let groupForBand= nameBandsWithSong.map( (songsData,index) =>{
+     // let  foundPositionGroup= nameBandsWithSong.findIndex(item => item.band === songsData.band)
+     // let  foundPositionSong= nameBandsWithSong.findIndex(item => item.song === songsData.song)
+        let group ={
                   band:"",
-                  song:{}
+                  song:[]
                 }
-        if( foundPositionGroup === index  ) 
-        {
-             group.band=songsData.band               
-             group.song=songsData.song                                 
+
+//console.log(nameBandsWithSong[index].song)       
+  
+//if( foundPositionGroup === index  ) 
+         // {
+         //    group.band=songsData.band               
+          //   group.song=songsData.song                                 
                         
-             return  group        
-        }
+         //    return  group        
+         // }
+
+         if(nameBandsWithSong[index].band === songsData.band)
+         {
+           console.log(1)
+         }
+
+         
        })
     return groupForBand
 }
 console.log(groupSongForBand(nameBandsWithSong,nombreBandas))
-*/
+
+/*
 const groupSongForBand = ( nameBandsWithSong)=>{
     console.log(nameBandsWithSong)
     //let inx = nameBandsWithSong.findIndex(item => item.band === "Jaguares")
@@ -199,7 +202,7 @@ const groupSongForBand = ( nameBandsWithSong)=>{
     return groupForBand
 }
 console.log(groupSongForBand(nameBandsWithSong,nombreBandas))
-
+*/
 
 
 
