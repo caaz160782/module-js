@@ -1,6 +1,10 @@
 /*
 Ejercicio:
 */
+$(document).ready(function(){
+
+ let $table = $('#table');
+
 const songsData = [
     {
         name: "¿Dónde jugarán los niños?",
@@ -68,12 +72,27 @@ const songsData = [
     }
 ]
 
+$('#table_id').DataTable({
+    data: songsData,
+    columns: [
+        { data: 'name' },
+        { data: 'band' },
+        { data: 'releaseYear' },
+        { data: 'statistics.likes' },
+        { data: 'statistics.reproductions' }
+         ],
+         paging: false,
+         searching: false,
+         ordering:  false,
+         bInfo: false,
+         
+})
+
 /////////////////////
-console.log(songsData)
+//console.log(songsData)
 ///////imprimir bandas
 
 //metodo largo map
-
 const band = (songArray ) => {
      let nombreBandas= songArray.map( (songObject) => { 
       let banda={    
@@ -91,7 +110,7 @@ const printBandas = (songArray ) => {
     let nombreBandas= songArray.map( (songObject) =>  songObject.band)
     return nombreBandas 
 }
-let nameBands1=printBandas(songsData)
+let nameBands1 = printBandas(songsData)
 //console.log(nameBands1)
 
 /*- Agrupar el nombres de la bandas, que no esten repetidas*/
@@ -170,10 +189,10 @@ const groupSongForBand = ( songArray,nameBandNoRepeat )=>{
              }           
         }                              
       }) 
-      return nameBandNoRepeat           
+      //return nameBandNoRepeat           
     }) 
  //   console.log(nameBandNoRepeat)            
-return canciones
+return nameBandNoRepeat
 }
 console.log( groupSongForBand( songsData,nameBandNoRepeat ) )
 //- Agrupar las canciones por una banda
@@ -215,7 +234,6 @@ console.log("----------------likes-----------------")
 const  songMostLikes= ( songsData  )=>{      
       let like= songsData.map( (songObject) =>  songObject.statistics.likes)
       let moreLike= Math.max( ...like )
-     // console.log (moreRepro)
       let mostLike= songsData.filter( (static) =>{
         if(static.statistics.likes >= moreLike   )        
         {
@@ -226,3 +244,4 @@ const  songMostLikes= ( songsData  )=>{
 }
 console.log(songMostLikes( songsData ))
 
+});
