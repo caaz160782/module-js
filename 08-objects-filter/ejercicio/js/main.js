@@ -181,22 +181,22 @@ grupo[0].record= ["prueba"]
 const groupSongForBand = ( songArray,nameBandNoRepeat )=>{
     let canciones= nameBandNoRepeat.map( (bandNorepeat ,index) =>{
         nameBandNoRepeat[index].canciones=[]    
-        songArray.forEach( (songObject)=> {
+         songArray.filter( (songObject)=> {
           if(bandNorepeat.band === songObject.band){
              let findSong = nameBandNoRepeat.findIndex(item => item.band === songObject.name )     
              if(findSong === -1){
                 nameBandNoRepeat[index].canciones.push(songObject.name)
-             }           
-        }                              
-      }) 
-      //return nameBandNoRepeat           
-    }) 
- //   console.log(nameBandNoRepeat)            
-return nameBandNoRepeat
+             } 
+           }         
+         })   
+         return nameBandNoRepeat
+    })         
+return canciones
 }
 console.log( groupSongForBand( songsData,nameBandNoRepeat ) )
-//- Agrupar las canciones por una banda
 
+
+//- buscar las canciones por una banda
 console.log("-----buscar por una banda------------")
 const cancionesXbanda = ( arraySongs, nameBanda )=>{
     //console.log(arraySongs);
@@ -226,7 +226,8 @@ const  songMostRepro= ( songsData  )=>{
             return songsData
         }      
     })
-    return mostRepo
+    //return mostRepo
+    return `La cancion con más reproducciones (${mostRepo[0].statistics.reproductions}) es ${mostRepo[0].name} de ${mostRepo[0].band}`
 }
 console.log(songMostRepro( songsData ))
 
@@ -240,8 +241,11 @@ const  songMostLikes= ( songsData  )=>{
             return songsData
         }      
     })
-    return mostLike
+    //return mostLike
+    return `La cancion con más like (${mostLike[0].statistics.likes}) es ${mostLike[0].name} de ${mostLike[0].band}`
+    
 }
 console.log(songMostLikes( songsData ))
+
 
 });
