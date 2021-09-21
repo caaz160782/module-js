@@ -180,23 +180,27 @@ grupo[0].record= ["prueba"]
 */
 const groupSongForBand = ( songArray,nameBandNoRepeat )=>{
     let canciones= nameBandNoRepeat.map( (bandNorepeat ,index) =>{
+        //console.log(bandNorepeat)
         nameBandNoRepeat[index].canciones=[]    
+        // bandNorepeat[index].canciones=[]    
+        //console.log(bandNorepeat)
          songArray.filter( (songObject)=> {
           if(bandNorepeat.band === songObject.band){
              let findSong = nameBandNoRepeat.findIndex(item => item.band === songObject.name )     
              if(findSong === -1){
-                nameBandNoRepeat[index].canciones.push(songObject.name)
+         //    nameBandNoRepeat[index].canciones.push(songObject.name)
+               bandNorepeat.canciones.push(songObject.name)
              } 
-           }         
+            }         
+            //return demo
          })   
-         return nameBandNoRepeat
+        return bandNorepeat
     })         
 return canciones
 }
 console.log( groupSongForBand( songsData,nameBandNoRepeat ) )
 
-
-//- buscar las canciones por una banda
+//- buscar las canciones por  banda
 console.log("-----buscar por una banda------------")
 const cancionesXbanda = ( arraySongs, nameBanda )=>{
     //console.log(arraySongs);
@@ -217,7 +221,9 @@ console.log("---------most repro------------------")
 const  songMostRepro= ( songsData  )=>{
       
       let repro= songsData.map( (songObject) =>  songObject.statistics.reproductions)
-       //console.log( repro )
+      const max = repro.reduce((acc,numero) => Math.max(acc,numero))
+      console.log(max)
+      //console.log( repro )
       let moreRepro= Math.max( ...repro )
      // console.log (moreRepro)
       let mostRepo= songsData.filter( (static) =>{
@@ -226,6 +232,8 @@ const  songMostRepro= ( songsData  )=>{
             return songsData
         }      
     })
+
+    //const max = songsData.reduce((acc,numero) => Math.max(acc,numero))
     //return mostRepo
     return `La cancion con más reproducciones (${mostRepo[0].statistics.reproductions}) es ${mostRepo[0].name} de ${mostRepo[0].band}`
 }
@@ -242,10 +250,63 @@ const  songMostLikes= ( songsData  )=>{
         }      
     })
     //return mostLike
-    return `La cancion con más like (${mostLike[0].statistics.likes}) es ${mostLike[0].name} de ${mostLike[0].band}`
+    return `La cancion con más like's (${mostLike[0].statistics.likes}) es ${mostLike[0].name} de ${mostLike[0].band}`
     
 }
 console.log(songMostLikes( songsData ))
+
+/*obtener una lista de strings con el siguiente formato:
+
+"la cancion {name} es de {banda}"
+*/ 
+const bandaYcancion = (songArray ) => {
+    
+    let nombreBandas= songArray.map( (songObject) => { 
+     let banda={    
+        band: songObject.band, 
+        cancion: songObject.name      
+        }
+       return `la cancion ${banda.cancion} es de ${banda.band}` 
+     })   
+    return nombreBandas
+    //return `la cancion ${banda.cancion} es de ${nombreBandas.band}`
+  }
+let nameBandsYcancion = bandaYcancion(songsData)
+
+console.log(nameBandsYcancion) 
+
+//aprender esta forma
+const bandaYcancion1 = (songArray ) => {
+    let bandas= songArray.map( (songObject) =>  `la cancion ${songObject.name} es de ${songObject.band}` )
+    return bandas
+}
+console.log(bandaYcancion1(songsData))
+
+
+/*
+crear una funcion que me permita Obtener las canciones que contengan un criterio de busqueda
+criterio: cel
+[
+    {
+        name: "La celula que explota",
+        band: "Jaguares",
+        releaseYear: "1999",
+        statistics: {
+            likes: 12000,
+            reproductions: 23421
+        },
+    }
+]
+*/
+const findCancion = (arraySong,property ,buscar )=>{
+    let songs= arraySong.filter((song) =>song[property].toLowerCase().includes(buscar.toLowerCase() ))
+    return songs    
+}
+let buscar=findCancion(songsData,"band","ma")
+console.log(buscar)
+
+
+
 
 
 });
