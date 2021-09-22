@@ -144,40 +144,7 @@ let nameBandNoRepeat=bandNoRepeat(nameBands)
 
 /*- Agrupar las canciones por una banda*/
 console.log("-----canciones por banda------------")
-/*
- bandas con canciones
-const bandWithSongs = (songArray) => {
-    let nombreBandas= songArray.map( (songObject) => { 
-    let bandWithSong={
-           band: songObject.band ,
-           song: songObject.name      
-          }             
-       return bandWithSong
-    })   
-    return nombreBandas
-  }
-let nameBandsWithSong = bandWithSongs(songsData)
-console.log(nameBandsWithSong)*/
-/*
-console.log("---------Demo-----------")
-let grupo=
-[
- {
-    grupo:"mana",
-    canciones:["sondejugaran","otra"]
- },
- {
-    grupo:"mercurio",
-    canciones:["sonan","ot"]
- }
-]
-let cancio =grupo[0].canciones[0]
-grupo[0].canciones.push("bonita")
-grupo[0].record= ["prueba"]
-//grupo[0].record.push("bonita")
-  console.log(cancio)
-  console.log(grupo)
-*/
+
 const groupSongForBand = ( songArray,nameBandNoRepeat )=>{
     let canciones= nameBandNoRepeat.map( (bandNorepeat ,index) =>{
         //console.log(bandNorepeat)
@@ -199,6 +166,38 @@ const groupSongForBand = ( songArray,nameBandNoRepeat )=>{
 return canciones
 }
 console.log( groupSongForBand( songsData,nameBandNoRepeat ) )
+
+//con reduce
+console.log( "------------reduce-----------------")
+const stringToCamelCase= string =>{
+   let strinCamelCased= string.split(" ").reduce((accum, word,index)=>{
+       let newString= word.toLowerCase()    
+       return index !==0
+                    ? accum +newString.charAt(0).toUpperCase() +newString.slice(1)
+                    : accum + newString
+   },"")
+ return strinCamelCased
+}
+
+//console.log(stringToCamelCase("Heroes del silencio"))
+
+const getSongByBand = (arraySong) =>{
+    let bandas =arraySong.reduce((accum,song)=> {
+        const {band}=song
+         let bandWithCamelCased= stringToCamelCase (band)
+        return !accum[band]
+               ? {...accum, [bandWithCamelCased]:[song] }   
+               : {...accum, [bandWithCamelCased]:[...accum[bandWithCamelCased],song] } 
+                                    ////acumulador en la propiedad band       
+  
+    },{})  
+    return bandas  
+  }
+  console.log( getSongByBand(songsData))
+
+
+
+
 
 //- buscar las canciones por  banda
 console.log("-----buscar por una banda------------")
