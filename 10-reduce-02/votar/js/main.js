@@ -53,7 +53,7 @@ Usar reduce para obtener la siguiente informacion
 - un array con aquellos votantes que votaron y que son menores a 30 años
 - la edad promedio de los no votantes
 
-- el porcentaje de votantes vs no votante
+
 
 */
 
@@ -96,13 +96,13 @@ const votemenor30 =(votaron) =>{
 
 
 console.log("-----4----")
+console.log("la edad promedio de los no votantes")
 //la edad promedio de los no votantes
 const noVote =(arrayPersons) =>{
 
     const novotaron = arrayPersons.reduce( (accum,persona) => { 
               return !persona.voted  
-                     ?[...accum, persona]        
-                    // ?accum + persona.age 
+                     ?[...accum, persona]                          
                      :accum 
      },[])
      return novotaron
@@ -118,8 +118,10 @@ const noVote =(arrayPersons) =>{
 }
 console.log(edadPromedioNoVota(novotaron))
 
+//- el porcentaje de votantes vs no votante
 console.log("-----5----")
-
+console.log("el porcentaje de votantes vs no votante")
+console.log("votaron")
 const porcentajevote =(arrayPersons) =>{
     const votaron = arrayPersons.reduce( (accum,persona) => { 
               return persona.voted  
@@ -130,8 +132,8 @@ const porcentajevote =(arrayPersons) =>{
  }
  console.log(porcentajevote(arrayPersons))
 
- console.log("-----6----")
-
+console.log("-----6----")  
+console.log(" no votaron")
  const porcentajeNoVote =(arrayPersons) =>{
      const noVotaron = arrayPersons.reduce( (accum,persona) => { 
                return !persona.voted  
@@ -142,8 +144,10 @@ const porcentajevote =(arrayPersons) =>{
   }
   console.log(porcentajeNoVote(arrayPersons))
 
-  console.log("-----7----")
-  //- el procentaje de mujeres que votaron
+ //- el procentaje de mujeres que votaron
+ console.log("-----7----")
+ console.log("el procentaje de mujeres que votaron")
+
   const womanVote =(arrayPersons) =>{
      const votaron = arrayPersons.reduce( (accum,persona) => { 
                return persona.voted && persona.gender === "mujer" 
@@ -154,8 +158,11 @@ const porcentajevote =(arrayPersons) =>{
   }
   console.log(womanVote(arrayPersons))
 
-  console.log("-----8----")
   //- el porcentaje de los hombres que votaron
+  console.log("-----8----")
+  console.log("el procentaje de hombres que votaron")
+
+ 
   const manVote =(arrayPersons) =>{
     const votaron = arrayPersons.reduce( (accum,persona) => { 
               return persona.voted && persona.gender === "hombre" 
@@ -169,9 +176,10 @@ const porcentajevote =(arrayPersons) =>{
  //dinamic porcentaje
  const genderPorcen =(arrayPersons,gender) =>{
     const votaron = arrayPersons.reduce( (accum,persona) => { 
-              return persona.voted && persona.gender === gender
+              return persona.voted && persona.gender === gender 
                      ?[...accum, persona]        
                      :accum 
+                
      },[])
      return (votaron.length *100)/arrayPersons.length
  }
