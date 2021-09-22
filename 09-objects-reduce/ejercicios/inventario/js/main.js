@@ -175,12 +175,45 @@ const chipsAndDrinks = (arrayProducts ) => {
       return chipAndDrink 
 }
 console.log( chipsAndDrinks(products) )
+
+//dinamico
+const dinamicChipDrink = (arrayProducts,find ) => {
+  let  product= arrayProducts.filter(( products) => products.type === find)
+      return product 
+}
+console.log( dinamicChipDrink(products,"drink"))
+
+console.log( "-----------Products-----------------------")
+
+const productsOrdered = (arrayProducts) =>{
+  let products =arrayProducts.reduce((accum,product)=> {
+      const {type}=product
+      return !accum[type]
+             ? {...accum, [type]:[product] }   
+             : {...accum, [type]:[...accum[type],product] } 
+
+  },{})
+  //console.log( products)
+  return products
+
+}
+
+console.log( productsOrdered(products))
+
+
 ///precios
 const precios = (arrayProducts ) => {
   let priceProducts= arrayProducts.filter(( products) => products.price < 50 || products.price >=50)
       return priceProducts 
 }
 console.log( precios(products) )
+
+
+const getProducts= (isMayor,arrayProducts) => {
+  return arrayProducts.filter( (product) => isMayor ?  product.price>=50 : product.price<50 )
+}
+
+console.log( getProducts(false, products) )
 
 ////inventario total
 const inventaryTotal = (arrayProducts ) => {
@@ -214,4 +247,33 @@ const inventaryTotalDrink = (arrayProducts ) => {
 }
 console.log( inventaryTotalDrink(products) )
 
+////dinamico
+const inventaryTotalDinamic = (arrayProducts, condicion ) => {
+  let inventTotalDinamic= arrayProducts.filter(( products) => products.type ===condicion)
+  let inventTotal= inventTotalDinamic.map(( Total) => Total.price)           
+  const total = inventTotal.reduce((accum, number)=> {
+         return accum + number
+    }, 0)    
+  return total      
+}
+console.log( inventaryTotalDinamic(products,"drink") )
 
+///con solo reduce
+const totalDrink =products.reduce((accum,product) =>{
+  //retorna accum por que si se regresa otro valor se perderia el acumulado
+  return product.type === "drink" ? accum +product.price: accum
+},0)
+console.log( totalDrink )
+
+/*
+////dinamico
+const inventaryTotalDinamic = (arrayProducts, condicion ) => {
+  const totalDrink =products.reduce((accum,product) =>{
+    //retorna accum por que si se regresa otro valor se perderia el acumulado
+    return product.type === "drink" ? accum +product.price: accum
+  },0)
+ 
+}
+
+console.log( inventaryTotalDinamic(products,"drink") )
+*/
