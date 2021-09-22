@@ -197,7 +197,6 @@ const productsOrdered = (arrayProducts) =>{
   return products
 
 }
-
 console.log( productsOrdered(products))
 
 
@@ -265,15 +264,14 @@ const totalDrink =products.reduce((accum,product) =>{
 },0)
 console.log( totalDrink )
 
-/*
-////dinamico
-const inventaryTotalDinamic = (arrayProducts, condicion ) => {
-  const totalDrink =products.reduce((accum,product) =>{
-    //retorna accum por que si se regresa otro valor se perderia el acumulado
-    return product.type === "drink" ? accum +product.price: accum
-  },0)
- 
-}
 
-console.log( inventaryTotalDinamic(products,"drink") )
-*/
+////dinamico
+const getTotalByType = ( arrayProducts,type) => {
+    return arrayProducts.reduce((accum, product)=>{
+        // debugger
+        return product.type === type
+               ? accum += product.price // acumulado - si si es de tipo drink
+               : accum // si no es de tipo drink - regresa el acumulado
+    }, 0)
+}
+console.log( getTotalByType(products,"chip") )

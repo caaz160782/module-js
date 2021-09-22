@@ -30,7 +30,9 @@ const arrayFruits = [
 */
 
 const result = arrayFruits.reduce((accum, fruit, index)=>{
-    let count = accum[fruit] ? accum[fruit] + 1 : 1
+    let count = accum[fruit] 
+                ?accum[fruit] + 1 
+                :1
     console.log(count)
     // console.log(accum)
     return {
