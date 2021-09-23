@@ -111,18 +111,19 @@ Ejercicio en clase:
 Teniendo la siguiente coleccion de Koders generar una coleccion de objetos de tipo Koder. Agregando además las siguientes funciones:
 - Prototipo de tipo koder
 */
-
 function Koders(name, lastName,birthday,generation,bootcamp,scores) {
     this.nombre = name
     this.lastName = lastName
-    this.birthday = birthday
+    this.birthday = birthday   
+    this.edad = this.calcularEdad()
     this.generation = generation
     this.bootcamp = bootcamp
-    this.scores = scores    
+    this.scores = scores   
+    this.score=this.score()
 }
 
 // Obtener la edad a partir de la fecha de nacimiento
-Koders.prototype.calcularEdad=function () {
+Koders.prototype.calcularEdad= function () {
     let hoy = new Date();
     let cumpleanos = new Date(this.birthday);
     let edad = hoy.getFullYear() - cumpleanos.getFullYear();
@@ -135,7 +136,7 @@ Koders.prototype.calcularEdad=function () {
 
 // Obtener promedio de sus scores
 Koders.prototype.score =function () {
-    console.log(this.scores)
+    //console.log(this.scores)
     const suma = this.scores.reduce( (accum,score) => { 
         return accum + score.score     
     },0)
@@ -143,7 +144,20 @@ Koders.prototype.score =function () {
 }
 
 let koder =kodersCollection.map((koders)=> new Koders(koders.name,koders.lastName,koders.birthday,koders.generation,koders.bootcamp,koders.scores))
+
+/*
+let koder1 =kodersCollection.map((koders)=> {
+ let koder= new Koders(koders)
+  return koder
+})
+console.log(koder1)
+*/
+
 console.log(koder)
+
+//console.log( koder[0].calcularEdad())
+//console.log( koder[0].score())
+
 
 // Colección de Koder que pertenezcan a JavaScript
 const koderJS = (koder) => {
@@ -158,8 +172,7 @@ const koderJS = (koder) => {
   console.log( koderJS(koder))
 
 // Colección de Koder que pertenezcan a Python
-const koderPython = (koder) => {
- 
+const koderPython = (koder) => { 
     let koders =koder.reduce( (accum,bootcamp) => {
         return bootcamp.bootcamp ==="Python"
               ?[...accum, bootcamp]        
@@ -182,3 +195,4 @@ const koderBoot = (koder,boot) => {
   console.log( koderBoot(koder,"JavaScript"))
 
 
+ 
