@@ -65,3 +65,5 @@ const ticket =(arrayCartShop) =>{
 }
 console.log( ticket(cartShoppings) )
 
+let totalCart = productsCart => productsCart.reduce((total, product) => total + product.price ,0);
+console.log(totalCart(cartShoppings));

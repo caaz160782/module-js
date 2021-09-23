@@ -56,9 +56,7 @@ Usar reduce para obtener la siguiente informacion
 
 
 */
-
 console.log("-----1----")
-
 const vote =(arrayPersons) =>{
    const votaron = arrayPersons.reduce( (accum,persona) => { 
              return persona.voted  
@@ -70,6 +68,7 @@ const vote =(arrayPersons) =>{
 
 console.log(vote(arrayPersons))
 let votaron=vote(arrayPersons)
+
 
 console.log("-----2----")
 
