@@ -180,25 +180,29 @@ let table = document.createElement("table")
 let thead = document.createElement("thead")  
 let trh = document.createElement("tr")  
 
+thead.appendChild(trh)
+
 encabezados.forEach(titulos =>{
     let th= document.createElement("th")     
     let text= document.createTextNode(titulos)    
-    thead.appendChild(trh)
     trh.appendChild(th)
     th.appendChild(text)
-    table.appendChild(thead)   
 })
 
+table.appendChild(thead)   
+
+
 let tbody = document.createElement("tbody") 
+
 mentor.forEach((mentor) =>{
     let trb = document.createElement("tr")  
     let tdName= document.createElement("td")
     let nombre= document.createTextNode(mentor.name)
-    trb.appendChild(tdName)  
-    tdName.appendChild(nombre)   
     let tdScoreHtml= document.createElement("td")
     let tdScoreCss= document.createElement("td")
     let tdScoreJs= document.createElement("td")
+    trb.appendChild(tdName)  
+    tdName.appendChild(nombre)
     
     mentor.scores.forEach( (scores) => {
           if(scores.signature === "HTML")
@@ -224,9 +228,12 @@ mentor.forEach((mentor) =>{
     let promedio= document.createTextNode(mentor.promedio)
     tbody.appendChild(trb)
     trb.appendChild(tdPromedio)  
-    tdPromedio.appendChild(promedio)   
-    table.appendChild(tbody)
+    tdPromedio.appendChild(promedio)      
+
 })
+
+table.appendChild(tbody)
+
 let tfoot = document.createElement("tfoot")
 let trf = document.createElement("tr")  
 
