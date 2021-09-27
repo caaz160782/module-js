@@ -176,13 +176,13 @@ const recorreScore=(array)=>{
 */
 const pintarTd= (score,td) =>{
      if(score >= 9){
-        td.classList.add("bg-success")
+        td.classList.add("aprobado")
     }
     else if(score >7 && score < 9){
-        td.classList.add("bg-warning")
+        td.classList.add("suficiente")
      }
      else if(score <= 7){
-        td.classList.add("bg-danger")
+        td.classList.add("reprobado")
        }
     }
 
@@ -210,7 +210,7 @@ mentorTable.appendChild(thead)
 
 let tbody = document.createElement("tbody") 
 
-mentor.forEach((mentor) =>{
+mentor.forEach((mentor,index) =>{
     let trb = document.createElement("tr")  
     let tdName= document.createElement("td")
     let nombre= document.createTextNode(mentor.name)
@@ -252,12 +252,14 @@ mentor.forEach((mentor) =>{
     trb.appendChild(tdPromedio)  
     tdPromedio.appendChild(promedio)        
     pintarTd(mentor.promedio,tdPromedio)
-
+     
     let tdBtnDelete= document.createElement("td")
     let btnDelete=document.createElement("button")
     let textBtn= document.createTextNode("eliminar")
-    btnDelete.type="button"
-    btnDelete.classList.add("bg-danger")
+    btnDelete.type="button" 
+    btnDelete.setAttribute("id", `btn-${index}`);
+    btnDelete.setAttribute("data-custom-key",`key-${index}`)
+    btnDelete.classList.add("eliminar")
     btnDelete.appendChild(textBtn)   
     trb.appendChild(tdBtnDelete)  
     tdBtnDelete.appendChild(btnDelete)        
@@ -268,11 +270,42 @@ mentor.forEach((mentor) =>{
 })
 
 mentorTable.appendChild(tbody)
-
-
 let promedio = document.getElementById("promedio")
 let textAvg = document.createTextNode(`El promedio general es: ${promedioTotal(mentor).toFixed(2)}`)
 
 promedio.appendChild(textAvg)
 
+let buttons = document.querySelectorAll(".eliminar")
+buttons.forEach(button => {
+/*    button.addEventListener("click",(evento)=> {
+        console.log(button.textContent)
+        console.log(evento)
+        console.log(evento.target)
+        console.log(evento.target.dataset.customKey)
+    })
+*/
+   button.addEventListener("click",(obtenerValores)=> {
+   })
 
+})
+
+
+
+// funcion que se ejecuta cada vez que se hace clic
+function obtenerValores(e) {
+    var valores="";
+
+    // vamos al elemento padre (<tr>) y buscamos todos los elementos <td>
+    // que contenga el elemento padre
+    var elementosTD=e.srcElement.parentElement.getElementsByTagName("td");
+
+    // recorremos cada uno de los elementos del array de elementos <td>
+    for(let i=0;i<elementosTD.length;i++)
+    {
+
+        // obtenemos cada uno de los valores y los ponemos en la variable "valores"
+        valores+=elementosTD[i].innerHTML+"\n";
+    }
+
+    alert(valores);
+}

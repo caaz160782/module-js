@@ -7,4 +7,20 @@ body {
   width: 80%;
   height: 300px;
 }
+
+.aprobado {
+  background-color: #3FDA05;
+}
+
+.suficiente {
+  background-color: #EDF801;
+}
+
+.reprobado {
+  background-color: #DA1205;
+}
+
+.eliminar {
+  background-color: red;
+}
 /*# sourceMappingURL=sytile.css.map */
