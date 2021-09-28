@@ -1,0 +1,31 @@
+body {
+  background-color: lightblue;
+}
+
+#mentorTable {
+  margin: 0 auto;
+  width: 80%;
+  height: 300px;
+}
+
+.aprobado {
+  background-color: #3FDA05;
+}
+
+.suficiente {
+  background-color: #EDF801;
+}
+
+.reprobado {
+  background-color: #DA1205;
+}
+
+.eliminar {
+  background-color: red;
+}
+
+.selected {
+  background-color: rebeccapurple;
+  color: #FFF;
+}
+/*# sourceMappingURL=sytile.css.map */
