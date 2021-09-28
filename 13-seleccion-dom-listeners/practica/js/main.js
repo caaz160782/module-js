@@ -274,38 +274,47 @@ let promedio = document.getElementById("promedio")
 let textAvg = document.createTextNode(`El promedio general es: ${promedioTotal(mentor).toFixed(2)}`)
 
 promedio.appendChild(textAvg)
+/*
+function highlight(e) {
+    if (selected[0]) selected[0].className = '';
+    e.target.parentNode.className = 'selected';
+}
+
+let table = document.getElementById('mentorTable'),
+
+selected = table.getElementsByClassName('selected');
+
+table.onclick = highlight;
+*/
 
 let buttons = document.querySelectorAll(".eliminar")
+
 buttons.forEach(button => {
-/*    button.addEventListener("click",(evento)=> {
-        console.log(button.textContent)
-        console.log(evento)
+    button.addEventListener("click",(e)=> {
+/*        console.log(button.textContent)
+        console.log(evento)7
         console.log(evento.target)
-        console.log(evento.target.dataset.customKey)
+        console.log(evento.target.dataset.customKey)*/
+        //alert(document.getElementById("mentorTable").rows[1].innerHTML);
+
+        //let mentor=document.getElementById("mentorTable").rows[1].cells[0].innerHTML
+        //alert(mentor)
+let valores=""
+        let elementosTD=e.target.parentElement.getElementsByTagName("td");
+        for(let i=0;i<elementosTD.length;i++)
+		{
+ 
+			// obtenemos cada uno de los valores y los ponemos en la variable "valores"
+			valores+=elementosTD[i].innerHTML+"\n";
+		}
+ 
+
+        //alert("Row index is: " + this.rowIndex);
+        alert(valores);
     })
-*/
-   button.addEventListener("click",(obtenerValores)=> {
-   })
+
+//        document.getElementById("tableid").deleteRow(i);
+
 
 })
 
-
-
-// funcion que se ejecuta cada vez que se hace clic
-function obtenerValores(e) {
-    var valores="";
-
-    // vamos al elemento padre (<tr>) y buscamos todos los elementos <td>
-    // que contenga el elemento padre
-    var elementosTD=e.srcElement.parentElement.getElementsByTagName("td");
-
-    // recorremos cada uno de los elementos del array de elementos <td>
-    for(let i=0;i<elementosTD.length;i++)
-    {
-
-        // obtenemos cada uno de los valores y los ponemos en la variable "valores"
-        valores+=elementosTD[i].innerHTML+"\n";
-    }
-
-    alert(valores);
-}

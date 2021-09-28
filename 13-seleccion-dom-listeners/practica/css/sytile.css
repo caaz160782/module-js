@@ -23,4 +23,9 @@ body {
 .eliminar {
   background-color: red;
 }
+
+.selected {
+  background-color: rebeccapurple;
+  color: #FFF;
+}
 /*# sourceMappingURL=sytile.css.map */
