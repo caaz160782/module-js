@@ -1,0 +1,56 @@
+<html>
+<head>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.2.min.js'></script>
+
+ <script type="text/javascript">
+ 
+ var milisegundos = 2000;
+
+ var siguiente = 0;
+ var imagen = new Array("https://lh4.googleusercontent.com/-uOp6B90Qc8w/T8T7-30ow8I/AAAAAAAAAgE/oIneuwouQAQ/s400/1.jpg", "https://lh6.googleusercontent.com/-_Tzlz89xwjc/T8T8FzruVHI/AAAAAAAAAgU/jBGuqzKN2BQ/s474/2.jpg", "https://lh4.googleusercontent.com/-zpOfJCVC8xU/T8T8KIc7PyI/AAAAAAAAAgo/8mdbdJyw17M/s268/3.png", "https://lh6.googleusercontent.com/-xz9ocYPZ__c/T8T8Oxk2guI/AAAAAAAAAg8/nfHv9vqWFS8/s395/4.png");
+timer = setTimeout('temporizador()', milisegundos);
+
+
+function temporizador() {
+$(document).ready(function() {
+$(".imagen").attr("src", imagen[siguiente]);
+
+$(".imagen").slideDown(1000).delay(1000).fadeIn(1000);
+$(".imagen").fadeOut(1500).delay(500).slideUp(1000, function(){
+timer = setTimeout('temporizador()', milisegundos);
+});
+});
+siguiente = siguiente + 1;
+
+if (siguiente > 3) {
+siguiente = 0;
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+<style type="text/css">
+#caja {
+width: 100px;
+height: 100px;
+background-color: grey;
+padding: 10px;
+opacity:0.8;
+filter:alpha(opacity=80); /* For IE8 and earlier */
+
+}
+
+</style>
+
+<div id="caja">
+<img class="imagen" src="https://lh4.googleusercontent.com/-uOp6B90Qc8w/T8T7-30ow8I/AAAAAAAAAgE/oIneuwouQAQ/s400/1.jpg" width="100" height="100">
+</div>
+</body>
+
+</html>
