@@ -12,7 +12,7 @@ class AlumnoObject{
 }
 
 let eliminaAlumno=(index,array)=> {
-   alert(index)
+   //alert(index)
    array.splice(index, 1);    
   }  
 
@@ -30,7 +30,6 @@ const printTable = (name,apellido,count ) => {
         let {name, apellido} = alumno*/
         //let index=1
         let tr = document.createElement("tr")
-
         let tdIndex = createNode("td", count )
         let tdName = createNode("td", name)
         let tdLastName = createNode("td", apellido)
@@ -44,8 +43,8 @@ const printTable = (name,apellido,count ) => {
             // Eliminar del array                
             let td = e.target.parentNode; 
             let tr = td.parentNode;
-            let index = Array.from(tr.parentNode.children).indexOf(tr);
-            //tr.parentNode.removeChild(tr);
+            let index = Array.from(tr.parentNode.children).indexOf(tr)
+            //tr.parentNode.removeChild(tr)
             /*let table = document.getElementById("tabllist-koderseId")
             let row = table.rows[index]
             let index =row.id
