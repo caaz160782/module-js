@@ -92,31 +92,6 @@ class Mentor{
         this.scores=scores
         this.promedio= this.promedioScope()
     }
-
-  /*  mentor.scores.forEach( (scores) => {
-        ///promedio por materia
-         if(scores.signature === "HTML")
-         {
-          //sumaHtml += scores.score
-          let ScoreHtml= document.createTextNode(scores.score)
-          trb.appendChild(tdScoreHtml)  
-          tdScoreHtml.appendChild(ScoreHtml)  
-         }
-         else if(scores.signature === "CSS")
-         {
-            let ScoreCss= document.createTextNode(scores.score)
-            trb.appendChild(tdScoreCss)  
-            tdScoreCss.appendChild(ScoreCss)     
-         }else
-        {
-            let ScoreJs= document.createTextNode(scores.score)
-            trb.appendChild(tdScoreJs)  
-            tdScoreJs.appendChild(ScoreJs) 
-        }
-       })
-
-*/
-
    promedioScope() {
     const suma = this.scores.reduce( (accum,score) => { 
         return accum + score.score     
