@@ -16,10 +16,49 @@
             </div>      
             <div class=" col-6 col-md-12  text-center">
                 <table id="mentorTable" >
-
+                    <thead>
+                        <tr>
+                          <th>Mentor</th>
+                          <th>Html</th>
+                          <th>Css</th>
+                          <th>Js</th>
+                          <th>Promedio</th>
+                        </tr>
+                      </thead>
                 </table>
+                <button type="button" id="viewForm" class="btn btn-primary">Agregar Mentor</button>
                 <span id="promedio"></span>
+               
             </div> 
+          <div class=" col-6 col-md-12  text-center">
+            <div  id="cardAgregar" class="card border-success mb-3 addMentor">
+                <div class="card-header bg-transparent border-success">Mentor</div>
+                <div class="card-body text-success">
+                    <form>
+                        <div class="form-group">
+                          <label >Name</label>
+                          <input type="text" class="form-control" id="inputName" placeholder="Enter Name">                      
+                        </div>
+                        <div class="form-group">
+                          <label >Score Html</label>
+                          <input type="text" class="form-control" id="inputHtml" placeholder="Enter Html">
+                        </div>
+                        <div class="form-group">
+                            <label >Score Css</label>
+                            <input type="text" class="form-control" id="inputCss" placeholder="Enter Html">
+                        </div>                     
+                        <div class="form-group">
+                            <label >Score JS</label>
+                            <input type="text" class="form-control" id="inputJs" placeholder="Enter Html">
+                        </div>                                                                  
+                      </form>
+                </div>
+                <div class="card-footer bg-transparent border-success">
+
+                    <button type="button" id="agregar" class="btn btn-primary">Agregar</button>
+                </div>
+              </div>  
+          </div>
         </div>     
 
     </main>

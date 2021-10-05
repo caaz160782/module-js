@@ -85,8 +85,7 @@ let mentorArray = [
         ]
     }
 ]
-class Mentor{
-   
+class Mentor{   
     constructor(name,scores){
         this.name=name,
         this.scores=scores
@@ -107,11 +106,10 @@ let mentor = mentorArray.map((mentor)=> new Mentor( mentor.name, mentor.scores )
 
 const promedioTotal = (mentor) => {
     let sumaProm = mentor.reduce( (accum,promedio) => {
-        //console.log(promedio.promedio)
-         return accum + parseFloat(promedio.promedio)
+        return accum + parseFloat(promedio.promedio)
        },0)
      return sumaProm/mentor.length  
-   }  
+  }  
 
 const promedioScope= (mentorArray) =>{
     let sumaHtml=0 
@@ -140,40 +138,19 @@ const promedioScope= (mentorArray) =>{
    let objectAvg= { promHtml, promCss, promJs}
    return objectAvg
 }
-/*
-const recorreScore=(array)=>{
 
-    mentor.scores.forEach( (scores) => {
-        if(scores.signature === "HTML")
-       {
-        let ScoreHtml= document.createTextNode(scores.score)
-        trb.appendChild(tdScoreHtml)  
-        tdScoreHtml.appendChild(ScoreHtml)  
-        pintarTd(scores.score,tdScoreHtml)          
-        }
-       else if(scores.signature === "CSS")
-       {
-          let ScoreCss= document.createTextNode(scores.score)
-          trb.appendChild(tdScoreCss)  
-          tdScoreCss.appendChild(ScoreCss)    
-          pintarTd(scores.score,tdScoreCss)
-          
-          
-       }else
-      {
-          let ScoreJs= document.createTextNode(scores.score)
-          trb.appendChild(tdScoreJs)  
-          tdScoreJs.appendChild(ScoreJs) 
-          pintarTd(scores.score,tdScoreJs)
-
-      }
-
-  
-         
-
-     })
+const createNode = (typeElement, text) => {
+    let node = document.createElement(typeElement)
+    node.textContent = text
+    // let textNode = document.createTextNode(text)
+    // node.appendChild(textNode)
+    return node
 }
-*/
+const eliminaMentor =(index,array)=>{
+    //array.splice(index, 1);    
+    delete array[index]
+}
+
 const pintarTd= (score,td) =>{
      if(score >= 9){
         td.classList.add("aprobado")
@@ -185,45 +162,87 @@ const pintarTd= (score,td) =>{
         td.classList.add("reprobado")
        }
     }
+//console.log(mentor)
+
+const agregaTd = (name,scores,promedio) => {
+    let tBody = document.getElementById("mentorTable")
+    /*alumno1.forEach((alumno, index) => {
+        let {name, apellido} = alumno*/
+        //let index=1
+        let tr = document.createElement("tr")
+        //let tdIndex = createNode("td", count )
+        let tdName = createNode("td", name)
+        tr.appendChild(tdName)
+        let tdScoreHtml= document.createElement("td")
+        let tdScoreCss= document.createElement("td")
+        let tdScoreJs= document.createElement("td")
+        
+        scores.forEach( (scores) => {
+              if(scores.signature === "HTML")
+             {
+              let ScoreHtml= document.createTextNode(scores.score)          
+              tr.appendChild(tdScoreHtml)  
+              tdScoreHtml.appendChild(ScoreHtml)  
+              pintarTd(scores.score,tdScoreHtml)          
+              }
+             else if(scores.signature === "CSS")
+             {
+                let ScoreCss= document.createTextNode(scores.score)
+                tr.appendChild(tdScoreCss)  
+                tdScoreCss.appendChild(ScoreCss)    
+                pintarTd(scores.score,tdScoreCss)            
+             }else
+            {
+                let ScoreJs= document.createTextNode(scores.score)
+                tr.appendChild(tdScoreJs)  
+                tdScoreJs.appendChild(ScoreJs) 
+                pintarTd(scores.score,tdScoreJs)
+    
+            }          
+    
+           })       
+           let tdPromedio = createNode("td",promedio )
+           tr.appendChild(tdPromedio)      
+           pintarTd(promedio,tdPromedio)
+        
+        let tdButton = document.createElement("td")
+
+        let btnDelete = createNode("button", "eliminar")
+        btnDelete.classList.add("btn", "btn-danger")
+
+        btnDelete.addEventListener("click", (e)=> {
+           let td = e.target.parentNode; 
+           let tr = td.parentNode;
+           let index = Array.from(tr.parentNode.children).indexOf(tr)
+           tr.parentNode.removeChild(tr)
+           //document.getElementById("mentorTable").deleteRow(index)
+           eliminaMentor(index,mentorArray)           
+        })
+
+        tdButton.appendChild(btnDelete)
+        tr.appendChild(tdButton)
+        tBody.appendChild(tr)
+    /*})*/
+}
 
 
-
-console.log(mentor)
 
 /**** */
 let mentorTable = document.getElementById("mentorTable")
-
-let encabezados =["Mentor","HTML","CSS","JS","Promedio"]
-
-let thead = document.createElement("thead")  
-let trh = document.createElement("tr")  
-
-thead.appendChild(trh)
-
-encabezados.forEach(titulos =>{
-    let th= document.createElement("th")     
-    let text= document.createTextNode(titulos)    
-    trh.appendChild(th)
-    th.appendChild(text)
-})
-mentorTable.appendChild(thead)
-
 let tbody = document.createElement("tbody") 
-
 mentor.forEach((mentor,index) =>{
     let trb = document.createElement("tr")  
-    let tdName= document.createElement("td")
-    let nombre= document.createTextNode(mentor.name)
+    let tdName = createNode("td", mentor.name )
+    trb.appendChild(tdName)  
+
     let tdScoreHtml= document.createElement("td")
     let tdScoreCss= document.createElement("td")
     let tdScoreJs= document.createElement("td")
-    trb.appendChild(tdName)  
-    tdName.appendChild(nombre)
     
     mentor.scores.forEach( (scores) => {
           if(scores.signature === "HTML")
          {
-          let ScoreHtml= document.createTextNode(scores.score)
+          let ScoreHtml= document.createTextNode(scores.score)          
           trb.appendChild(tdScoreHtml)  
           tdScoreHtml.appendChild(ScoreHtml)  
           pintarTd(scores.score,tdScoreHtml)          
@@ -233,9 +252,7 @@ mentor.forEach((mentor,index) =>{
             let ScoreCss= document.createTextNode(scores.score)
             trb.appendChild(tdScoreCss)  
             tdScoreCss.appendChild(ScoreCss)    
-            pintarTd(scores.score,tdScoreCss)
-            
-            
+            pintarTd(scores.score,tdScoreCss)            
          }else
         {
             let ScoreJs= document.createTextNode(scores.score)
@@ -246,75 +263,88 @@ mentor.forEach((mentor,index) =>{
         }          
 
        })
-    tbody.appendChild(trb)
-    let tdPromedio= document.createElement("td")
-    let promedio= document.createTextNode(mentor.promedio)
-    trb.appendChild(tdPromedio)  
-    tdPromedio.appendChild(promedio)        
+    let tdPromedio = createNode("td", mentor.promedio )
+    trb.appendChild(tdPromedio)      
     pintarTd(mentor.promedio,tdPromedio)
-     
+    
     let tdBtnDelete= document.createElement("td")
     let btnDelete=document.createElement("button")
     let textBtn= document.createTextNode("eliminar")
     btnDelete.type="button" 
     btnDelete.setAttribute("id", `btn-${index}`);
     btnDelete.setAttribute("data-custom-key",`key-${index}`)
-    btnDelete.classList.add("eliminar")
+    btnDelete.classList.add("btn", "btn-danger")
     btnDelete.appendChild(textBtn)   
     trb.appendChild(tdBtnDelete)  
-    tdBtnDelete.appendChild(btnDelete)        
-
-//<button type="button" class="btn btn-danger">Danger</button>
-
-
+    tdBtnDelete.appendChild(btnDelete)    
+    
+    btnDelete.addEventListener("click",(e)=> {
+        let td = e.target.parentNode; 
+        let tr = td.parentNode;
+        let index = Array.from(tr.parentNode.children).indexOf(tr)
+        tr.parentNode.removeChild(tr)
+        //document.getElementById("mentorTable").deleteRow(index)
+         eliminaMentor(index,mentorArray)
+         console.log(mentorArray)
+        
+    })    
+    tbody.appendChild(trb)
 })
 
 mentorTable.appendChild(tbody)
 let promedio = document.getElementById("promedio")
 let textAvg = document.createTextNode(`El promedio general es: ${promedioTotal(mentor).toFixed(2)}`)
-
 promedio.appendChild(textAvg)
-/*
-function highlight(e) {
-    if (selected[0]) selected[0].className = '';
-    e.target.parentNode.className = 'selected';
-}
 
-let table = document.getElementById('mentorTable'),
-
-selected = table.getElementsByClassName('selected');
-
-table.onclick = highlight;
-*/
-
-let buttons = document.querySelectorAll(".eliminar")
-
-buttons.forEach(button => {
-    button.addEventListener("click",(e)=> {
-/*        console.log(button.textContent)
-        console.log(evento)7
-        console.log(evento.target)
-        console.log(evento.target.dataset.customKey)*/
-        //alert(document.getElementById("mentorTable").rows[1].innerHTML);
-
-        //let mentor=document.getElementById("mentorTable").rows[1].cells[0].innerHTML
-        //alert(mentor)
-let valores=""
-        let elementosTD=e.target.parentElement.getElementsByTagName("td");
-        for(let i=0;i<elementosTD.length;i++)
-		{
- 
-			// obtenemos cada uno de los valores y los ponemos en la variable "valores"
-			valores+=elementosTD[i].innerHTML+"\n";
-		}
- 
-
-        //alert("Row index is: " + this.rowIndex);
-        alert(valores);
-    })
-
-//        document.getElementById("tableid").deleteRow(i);
-
-
+let viewForm = document.getElementById("viewForm")
+let  cardAgregar= document.getElementById("cardAgregar")    
+viewForm.addEventListener("click",(e)=>{   
+   cardAgregar.style.display = 'block'
 })
+
+let agregar = document.getElementById("agregar")
+let inputs = document.querySelectorAll(".form-control")
+agregar.addEventListener("click",(e)=>{
+    let nombre=document.getElementById("inputName").value 
+    let scoreHtml=document.getElementById("inputHtml").value 
+    let scoreCss=document.getElementById("inputCss").value 
+    let scoreJs=document.getElementById("inputJs").value 
+    let scores=[]
+    if(nombre !== "" && scoreHtml !== "" && scoreCss !=="" && scoreJs !== ""){
+    inputs.forEach((int) => { 
+        switch (int.id) {
+          case "inputName":
+            nombre=int.value
+           break;
+          case "inputHtml":
+            scoreHtml=int.value
+           break;  
+          case "inputCss":
+            scoreCss=int.value
+          break;   
+          case "inputJs":
+            scoreJs=int.value
+           break;      
+       }    
+    })
+    mentorArray.push({name:nombre, scores:[{signature:"HTML",score:parseInt(scoreHtml)},{signature:"CSS",score:parseInt(scoreCss)},{signature:"JS",score:parseInt(scoreJs)} ]}) 
+    console.log(mentorArray) 
+    let mentorNew=""
+    let scores= [{signature:"HTML",score:parseInt(scoreHtml)},{signature:"CSS",score:parseInt(scoreCss)},{signature:"JS",score:parseInt(scoreJs)}]
+    mentorNew = new Mentor(nombre,scores)
+    mentor.push(mentorNew)
+    console.log(mentor) 
+    agregaTd(nombre,scores,mentorNew.promedio)
+
+    document.getElementById("inputName").value =""
+    document.getElementById("inputHtml").value =""
+    document.getElementById("inputCss").value =""
+    document.getElementById("inputJs").value =""
+    cardAgregar.style.display = 'none'
+    }else 
+    {
+      alert("ningun campo puede estar vacio")
+    }
+ })
+
 
