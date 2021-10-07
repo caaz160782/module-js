@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+ 
+ 
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Mentor</h5>
+          <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formEdit">
+            <div class="mb-3">
+              <label for="inputName" class="form-label">Name</label>
+              <input type="text" name="name" class="form-control" id="inputName">            
+            </div>
+            <div class="mb-3">
+              <label for="inputPhone" class="form-label">Telefono</label>
+              <input type="text" name="phone" class="form-control" id="inputPhone">
+            </div>
+            <div class="mb-3">
+              <label for="inputGit" class="form-label">Git</label>
+              <input type="text" name="git" class="form-control" id="inputGit">                                 
+            </div>
+            <div class="mb-3">
+              <label for="inputGitUrl" class="form-label">Git Url</label>
+              <input type="text" name="gitUrl" class="form-control" id="inputGitUrl">                     
+            </div>
+          </form>
+         
+        </div>
+        <div class="modal-footer">
+             <button type="button" id="editarModal" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <main id="container" class="container d-flex flex-column justify-content-center " >
+    <div class="row">
+       <div id="contentFrm" class="flex-column justify-content-center align-items-center">
+        <form id="formAdd">
+          <div class="mb-3">
+            <label for="inputName" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="inputName">            
+          </div>
+          <div class="mb-3">
+            <label for="inputPhone" class="form-label">Telefono</label>
+            <input type="text" name="phone" class="form-control" id="inputPhone">
+          </div>
+          <div class="mb-3">
+            <label for="inputGit" class="form-label">Git</label>
+            <input type="text" name="git" class="form-control" id="inputGit">                                 
+          </div>
+          <div class="mb-3">
+            <label for="inputGitUrl" class="form-label">Git Url</label>
+            <input type="text" name="gitUrl" class="form-control" id="inputGitUrl">                     
+          </div>
+          <button type="button" id="crear" class="btn btn-primary">Submit</button>
+        </form>
+       </div>
+    </div>
+
+    <div class="row mt-5" id="rowCards">   
+    
+    </div>
+
+
+ </main>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+    integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
