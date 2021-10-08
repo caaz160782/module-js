@@ -4,8 +4,7 @@ const createMentor = (mentorObject) => {
             method: "POST", 
             url: "https://api-13va-default-rtdb.firebaseio.com/toño/mentors.json",
             data: JSON.stringify(mentorObject),
-            success: (response)=> {
-                
+            success: (response)=> {                
                 //printCard(response)
                 printCard(getMentor())
 
@@ -137,8 +136,7 @@ const printCard = (mentorObject) => {
        nombre = document.createTextNode(name);
        h5.classList.add("card-title")  
        h5.appendChild(nombre) 
-       divCardBody.appendChild(h5)       
-      
+       divCardBody.appendChild(h5)         
 
       let ul=  document.createElement("ul") 
       ul.classList.add("list-group","list-group-flush")  
@@ -148,7 +146,6 @@ const printCard = (mentorObject) => {
       phone = document.createTextNode(phone);  
       liPhone.appendChild(phone)  
       ul.appendChild(liPhone)
-
 
       let liGit=  document.createElement("li") 
       liGit.classList.add("list-group-item")  
@@ -194,9 +191,52 @@ printCard(getMentor())
 
 //obtener campos de inputs
 $("#crear").click(()=>{
-  let mentor= getForm("formAdd")
+  let mentor= getForm("formAdd")  
+  $("#formAdd #inputName").val(mentor.name)
+  $("#formAdd #inputPhone").val(mentor.phone)
+  $("#formAdd #inputGit").val(mentor.git)
+  $("#formAdd #inputGitUrl").val(mentor.gitUrl)
+
+  let errorName = document.getElementById("errorName")  
+  let errorPhone = document.getElementById("errorPhone") 
+  let errorGit = document.getElementById("errorGit")   
+  let errorGitUrl = document.getElementById("errorGitUrl")  
+   //$("#errorName").hide()
+  //$("#errorName").css("display", "none");
   //console.log(mentor)
-  createMentor(mentor)
+  if(mentor.name === "")
+  {
+      
+    txtError =document.createTextNode("Ingrese el nombre");  
+    errorName.classList.add("btn-danger") 
+    errorName.appendChild(txtError)    
+  }
+  else if(mentor.phone === "")
+  {
+    $("#errorName").remove();   
+
+    txtError =document.createTextNode("Ingrese el telefono");  
+    errorPhone.classList.add("btn-danger") 
+    errorPhone.appendChild(txtError)    
+  }
+  else if(mentor.git === "")
+  {
+    $("#errorPhone").remove(); 
+    txtError =document.createTextNode("Ingrese Git");  
+    errorGit.classList.add("btn-danger") 
+    errorGit.appendChild(txtError) 
+  }
+  else if(mentor.gitUrl === "")
+  {
+    $("#errorGit").remove(); 
+    txtError =document.createTextNode("Ingrese Git");  
+    errorGitUrl.classList.add("btn-danger") 
+    errorGitUrl.appendChild(txtError) 
+  }
+    else{
+        $("#errorGitUrl").remove();
+     createMentor(mentor)  
+  }
 })
 
 //obtener campos de inputs
